@@ -2,17 +2,17 @@ package dev.katadni.models;
 
 public class DniModel {
 
-    private String numberDNI;
+    private int numberDNI;
 
-    public DniModel(String numberDNI) {
+    public DniModel(int numberDNI) {
         this.numberDNI = numberDNI;
     }
 
-    public String getNumberDNI() {
+    public int getNumberDNI() {
         return numberDNI;
     }
 
-    public void setNumberDNI(String numberDNI) {
+    public void setNumberDNI(int numberDNI) {
         this.numberDNI = numberDNI;
     }
 

@@ -6,16 +6,20 @@ public class DniView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String askNumberDni(){
+    public static int askNumberDni(){
+
         System.out.println("------------ Calculate Letter DNI ------------");
         System.out.println("Enter the DNI number");
-        return scanner.nextLine();
+        
+        return scanner.nextInt();
 
     }
 
-    public static void showsLetterDni(String letterDni){
-        System.out.println("letter DNI");
-
+    public static void showsLetterDni(char letterDni, int dni){
+        System.out.println("--------------------------------");
+        System.out.println("The DNI letter is: " + letterDni);
+        System.out.println("The Full Identification number is: " + letterDni+dni);
+    
     }
 
 }

@@ -11,10 +11,16 @@ public class DniController {
     }
 
     public static void startProgram(){
-        String dniNumber = DniView.askNumberDni();
+        int dniNumber = DniView.askNumberDni();
         DniModel dni = new DniModel(dniNumber);
-        DniLetterModel.calculateLetterDni(dni);
-        //showsLetterDni();
+        char letter = DniLetterModel.calculateLetterDni(dni);
+        showsLetterDni(letter, dniNumber);
 
     }
+
+    public static void showsLetterDni(char letter, int dniNumber) {
+        DniView.showsLetterDni(letter, dniNumber);
+        
+    }
+
 }
