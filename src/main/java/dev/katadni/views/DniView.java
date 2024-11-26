@@ -7,12 +7,25 @@ public class DniView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int askNumberDni(){
+        while (true) {
+            try {
+                System.out.println("------------ Calculate Letter DNI ------------");
+                System.out.println("Enter the DNI number: ");
+                int dniNumber = scanner.nextInt();
 
-        System.out.println("------------ Calculate Letter DNI ------------");
-        System.out.println("Enter the DNI number");
-        
-        return scanner.nextInt();
+                if(dniNumber >= 0 && dniNumber < 99999999){
+                    return dniNumber;    
+                    
+                }else{
+                    System.err.println("The DNI number must be between 0 and 99999999 ");
+                }  
+            } catch (Exception e) {
+                System.err.println("Invalid input. Please enter a valid DNI number.");
+                scanner.nextLine();
 
+            }
+                      
+        }
     }
 
     public static void showsLetterDni(char letterDni, int dni){
