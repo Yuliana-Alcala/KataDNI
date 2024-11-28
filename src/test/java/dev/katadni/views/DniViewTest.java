@@ -3,8 +3,10 @@ package dev.katadni.views;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,32 +19,38 @@ public class DniViewTest {
 
     @BeforeEach
     void setUp() {
-        // Inicializar el ByteArrayOutputStream y redirigir la salida
+        
         outputStream = new ByteArrayOutputStream();
-        originalOut = System.out; // Guardar la salida original
-        System.setOut(new PrintStream(outputStream)); // Redirigir System.out al outputStream
+        originalOut = System.out; 
+        System.setOut(new PrintStream(outputStream));
     }
     @Test
-    void testAskNumberDni() {
+    void testAskNumberDni_valid() {
         
+        String simulatedInput = "12345678\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));      
+       
+        int dniNumber = DniView.askNumberDni();    
+        
+        assertThat(dniNumber, is(12345678));    
+        
+        String output = outputStream.toString().trim();
+        String expectedOutput = "------------ Calculate Letter DNI ------------\nEnter the DNI number:"; 
+        assertThat(output, is(expectedOutput));
     }
 
     @Test
     void testShowsLetterDni() {
-        char letterDni = 'T';
+        char letterDni = 'Z';
         int dni = 12345678;
 
-        // Call the method
         DniView.showsLetterDni(letterDni, dni);
 
-        // Capture the output
         String output = outputStream.toString().trim();
 
-        // Verify the expected output
-        String expectedOutput = "--------------------------------\nThe DNI letter is: T\nThe Full Identification number is: T12345678";
+        String expectedOutput = "--------------------------------\nThe DNI letter is: Z\nThe Full Identification number is: Z12345678";
         assertThat(output, is(expectedOutput));
 
-        // Reset output stream
         System.setOut(originalOut);
 
     }
