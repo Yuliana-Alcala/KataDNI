@@ -28,14 +28,11 @@ public class DniViewTest {
     void testAskNumberDni_valid() {
         
         String simulatedInput = "12345678\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));  
-    
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));      
        
-        int dniNumber = DniView.askNumberDni();
-    
+        int dniNumber = DniView.askNumberDni();    
         
-        assertThat(dniNumber, is(12345678));
-    
+        assertThat(dniNumber, is(12345678));    
         
         String output = outputStream.toString().trim();
         String expectedOutput = "------------ Calculate Letter DNI ------------\nEnter the DNI number:"; 
@@ -47,17 +44,13 @@ public class DniViewTest {
         char letterDni = 'Z';
         int dni = 12345678;
 
-        // Call the method
         DniView.showsLetterDni(letterDni, dni);
 
-        // Capture the output
         String output = outputStream.toString().trim();
 
-        // Verify the expected output
         String expectedOutput = "--------------------------------\nThe DNI letter is: Z\nThe Full Identification number is: Z12345678";
         assertThat(output, is(expectedOutput));
 
-        // Reset output stream
         System.setOut(originalOut);
 
     }
