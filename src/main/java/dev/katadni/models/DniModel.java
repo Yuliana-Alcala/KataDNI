@@ -12,10 +12,6 @@ public class DniModel {
         return numberDNI;
     }
 
-    public void setNumberDNI(int numberDNI) {
-        this.numberDNI = numberDNI;
-    }
-
-
+  
 
 }
